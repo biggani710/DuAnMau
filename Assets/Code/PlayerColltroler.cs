@@ -16,13 +16,13 @@ public class PlayerController : MonoBehaviour
     private bool isDashing = false;
     private bool hasJump = false;
     public GameObject DashEffectObject;
-    //private Animator animator;
+    private Animator animator;
     private Vector2 moveInput;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = rb.GetComponent<SpriteRenderer>();
-        //animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
             hasJump = false;
         }
 
-        //UpdateAnimationState();
+        UpdateAnimationState();
     }
 
     void Dash()
@@ -74,16 +74,37 @@ public class PlayerController : MonoBehaviour
         DashEffectObject.SetActive(false);
     }
 
-    //void UpdateAnimationState()
-    //{
-        //if (moveInput.magnitude > 0)
-        //{
-            //animator.SetBool("isRunning", true);
-        //}
-        //else
-        //{
-            //animator.SetBool("isRunning", false);
+    void UpdateAnimationState()
+    {
+        //chay
+        if (moveInput.magnitude > 0)
+        {
+            animator.SetBool("isRunning", true);
+        }
+        else
+        {
+            animator.SetBool("isRunning", false);
 
-        //}
-    //}
+        }
+        //dungyen
+        if (moveInput.magnitude > 0)
+        {
+            animator.SetBool("isIdel", true);
+        }
+        else
+        {
+            animator.SetBool("isIdel", false);
+
+        }
+        //nhay
+        if (moveInput.magnitude > 0)
+        {
+            animator.SetBool("isJump", true);
+        }
+        else
+        {
+            animator.SetBool("isJump", false);
+
+        }
+    }
 }
