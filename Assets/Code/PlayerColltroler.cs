@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private bool isDashing = false;
     private bool hasJump = false;
+    public GameObject DashEffectObject;
     //private Animator animator;
     private Vector2 moveInput;
     void Start()
@@ -61,6 +62,7 @@ public class PlayerController : MonoBehaviour
         float dashDirection = spriteRenderer.flipX ? -1f : 1f;
         rb.velocity = new Vector2(dashForce * dashDirection, rb.velocity.y);
         isDashing = true;
+        DashEffectObject.SetActive(true);
         StartCoroutine(StopDash());
     }
 
@@ -69,6 +71,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(DashTime);
         rb.velocity = new Vector2(0f, rb.velocity.y);
         isDashing = false;
+        DashEffectObject.SetActive(false);
     }
 
     //void UpdateAnimationState()
