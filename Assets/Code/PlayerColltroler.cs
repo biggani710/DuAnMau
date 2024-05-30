@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -17,10 +18,12 @@ public class PlayerController : MonoBehaviour
     private bool hasJump = false;
     public GameObject DashEffectObject;
     private Vector2 moveInput;
+    private Animation _animator;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = rb.GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animation>();
     }
 
     // Update is called once per frame
@@ -69,4 +72,5 @@ public class PlayerController : MonoBehaviour
         isDashing = false;
         DashEffectObject.SetActive(false);
     }
+
 }
