@@ -65,8 +65,6 @@ public class PlayerController : MonoBehaviour
         isDashing = true;
         dashEffectObject.SetActive(true);
         StartCoroutine(StopDash());
-        bool havemove = Mathf.Abs(rb.velocity.y) > Mathf.Epsilon;
-        animator.SetBool("isRunning", havemove);
     }
 
     IEnumerator StopDash()
