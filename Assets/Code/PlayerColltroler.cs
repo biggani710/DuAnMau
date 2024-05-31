@@ -18,12 +18,14 @@ public class PlayerController : MonoBehaviour
     private bool hasJump = false;
     public GameObject dashEffectObject;
     Animator animator;
+    private bool isAlive;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        isAlive = true;
     }
 
     void Update()
@@ -73,5 +75,18 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(0f, rb.velocity.y);
         isDashing = false;
         dashEffectObject.SetActive(false);
+    }
+
+    void Die()
+    {
+        var isTouchingEnemy = rb.IsTouchingLayers(LayerMask.GetMask("Enemy", "Trap"));
+        if (isTouchingEnemy)
+        {
+            isAlive = false;
+            //anim.SetTrigger("Dying");
+            rb.velocity = new Vector2(0, 0);
+            //Xu ly die
+           // FindObjectOfType<GameController>().ProcessPlayerDeath();
+        }
     }
 }
