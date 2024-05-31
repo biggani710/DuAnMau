@@ -5,7 +5,6 @@ using UnityEngine;
 public class CoinPickUp : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject coineffect;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
