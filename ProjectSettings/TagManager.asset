@@ -13,7 +13,7 @@ TagManager:
   - Water
   - UI
   - Interactable
-  - 
+  - Player
   - 
   - 
   - 
@@ -53,6 +53,9 @@ TagManager:
     locked: 0
   - name: Tree
     uniqueID: 3594764949
+    locked: 0
+  - name: Point
+    uniqueID: 1024195603
     locked: 0
   - name: Player
     uniqueID: 4224331417
