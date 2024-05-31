@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -15,16 +16,13 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private bool isDashing = false;
     private bool hasJump = false;
-    //private Animator animator;
+    public GameObject DashEffectObject;
     private Vector2 moveInput;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = rb.GetComponent<SpriteRenderer>();
-        //animator = GetComponent<Animator>();
     }
-
-    // Update is called once per frame
     void Update()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheckObject.position, 0.2f, LayerMask.GetMask("Ground"));
@@ -52,8 +50,6 @@ public class PlayerController : MonoBehaviour
             Dash();
             hasJump = false;
         }
-
-        //UpdateAnimationState();
     }
 
     void Dash()
@@ -61,6 +57,7 @@ public class PlayerController : MonoBehaviour
         float dashDirection = spriteRenderer.flipX ? -1f : 1f;
         rb.velocity = new Vector2(dashForce * dashDirection, rb.velocity.y);
         isDashing = true;
+        DashEffectObject.SetActive(true);
         StartCoroutine(StopDash());
     }
 
@@ -69,18 +66,6 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(DashTime);
         rb.velocity = new Vector2(0f, rb.velocity.y);
         isDashing = false;
+        DashEffectObject.SetActive(false);
     }
-
-    //void UpdateAnimationState()
-    //{
-        //if (moveInput.magnitude > 0)
-        //{
-            //animator.SetBool("isRunning", true);
-        //}
-        //else
-        //{
-            //animator.SetBool("isRunning", false);
-
-        //}
-    //}
 }
