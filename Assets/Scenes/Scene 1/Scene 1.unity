@@ -2111,9 +2111,9 @@ MonoBehaviour:
   moveSpeed: 10
   jumpForce: 25
   dashForce: 60
-  DashTime: 0.3
+  dashTime: 0.3
   groundCheckObject: {fileID: 1469328620}
-  DashEffectObject: {fileID: 1599303101}
+  dashEffectObject: {fileID: 1599303101}
 --- !u!61 &1049655724
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3079,7 +3079,7 @@ GameObject:
   - component: {fileID: 1471943157}
   m_Layer: 3
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
