@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ladder
   layers:
   - Default
   - TransparentFX
@@ -52,4 +53,7 @@ TagManager:
     locked: 0
   - name: coin
     uniqueID: 487640885
+    locked: 0
+  - name: ladder
+    uniqueID: 37003973
     locked: 0
