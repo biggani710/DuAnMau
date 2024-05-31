@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,6 +34,6 @@ public class EnemyController : MonoBehaviour
     }
     void Flip()
     {
-        transform.localScale = new Vector2(isRight, 1f);
+        transform.localScale = new Vector3(isRight, 1f);
     }
 }
