@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     private bool isDashing = false;
     private bool hasJump = false;
     public GameObject dashEffectObject;
-    private Animator animator;
+    Animator animator;
 
     void Start()
     {
@@ -30,7 +30,8 @@ public class PlayerController : MonoBehaviour
     {
         isGrounded = Physics2D.OverlapCircle(groundCheckObject.position, 0.2f, LayerMask.GetMask("Ground"));
         float moveInput = Input.GetAxisRaw("Horizontal");
-        animator.SetFloat("isRunning", Mathf.Abs(moveInput));
+        bool havemove = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
+        animator.SetBool("isRunning", havemove);
 
         if (!isDashing)
         {
@@ -64,6 +65,8 @@ public class PlayerController : MonoBehaviour
         isDashing = true;
         dashEffectObject.SetActive(true);
         StartCoroutine(StopDash());
+        bool havemove = Mathf.Abs(rb.velocity.y) > Mathf.Epsilon;
+        animator.SetBool("isRunning", havemove);
     }
 
     IEnumerator StopDash()
@@ -72,19 +75,5 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(0f, rb.velocity.y);
         isDashing = false;
         dashEffectObject.SetActive(false);
-    }
-
-    // Hàm này được gọi từ animation event khi kết thúc animation nhảy
-    public void EndJump()
-    {
-        animator.SetBool("isJump", false);
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            animator.SetBool("isJump", false);
-        }
     }
 }
