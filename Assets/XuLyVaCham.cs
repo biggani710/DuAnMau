@@ -6,7 +6,7 @@ using TMPro;
 public class XuLyVaCham : MonoBehaviour
 {
     public int Mau = 3;
-    public int Coin = 0;
+    public int Vang = 0;
     public TextMeshProUGUI VangText;
     public TextMeshProUGUI MauText;
     void Start()
@@ -22,9 +22,9 @@ public class XuLyVaCham : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Coin"))
+        if (collision.CompareTag("Vang"))
         {
-            Coin++;
+            Vang++;
             Destroy(collision.gameObject);
             VangText.SetText(VangText.ToString());
             Destroy(collision.gameObject);
