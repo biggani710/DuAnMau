@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -11,8 +12,8 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
-  - 
+  - Interactable
+  - Player
   - 
   - 
   - 
@@ -47,12 +48,15 @@ TagManager:
   - name: Ground
     uniqueID: 1052686861
     locked: 0
+  - name: Door
+    uniqueID: 1680150779
+    locked: 0
   - name: Tree
     uniqueID: 3594764949
     locked: 0
+  - name: Point
+    uniqueID: 1024195603
+    locked: 0
   - name: Player
     uniqueID: 4224331417
-    locked: 0
-  - name: Door
-    uniqueID: 1680150779
     locked: 0
