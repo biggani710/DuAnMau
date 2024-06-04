@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CrileTrap : MonoBehaviour
 {
@@ -33,5 +34,12 @@ public class CrileTrap : MonoBehaviour
     private void FixedUpdate()
     {
         transform.Rotate(0, 0, tocDoXoay);
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            SceneManager.LoadScene("Scene 2");
+        }
     }
 }

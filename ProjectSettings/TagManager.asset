@@ -8,6 +8,7 @@ TagManager:
   - GaiNhon
   - Vang
   - Coin
+  - CongDichChuyen
   layers:
   - Default
   - TransparentFX

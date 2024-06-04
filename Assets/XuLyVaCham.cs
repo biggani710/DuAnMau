@@ -25,11 +25,10 @@ public class XuLyVaCham : MonoBehaviour
         if (collision.CompareTag("Vang"))
         {
             Vang++;
-            Destroy(collision.gameObject);
             VangText.SetText(VangText.ToString());
             Destroy(collision.gameObject);
         }
-        if(collision.CompareTag("GaiNhon"))
+        if(collision.CompareTag("FallTrap"))
         {
             Mau--;
             MauText.SetText(Mau.ToString());
