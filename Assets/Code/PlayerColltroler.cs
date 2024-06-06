@@ -1,5 +1,6 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -8,27 +9,32 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 10f;
     public float jumpForce = 25f;
     public float dashForce = 20f;
-    public float DashTime = 0.3f;
+    public float dashTime = 0.3f;
     private Rigidbody2D rb;
     public Transform groundCheckObject;
     private SpriteRenderer spriteRenderer;
     private bool isGrounded;
     private bool isDashing = false;
     private bool hasJump = false;
-    //private Animator animator;
-    private Vector2 moveInput;
+    public GameObject dashEffectObject;
+    Animator animator;
+    private bool isAlive;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = rb.GetComponent<SpriteRenderer>();
-        //animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+        isAlive = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheckObject.position, 0.2f, LayerMask.GetMask("Ground"));
         float moveInput = Input.GetAxisRaw("Horizontal");
+        bool havemove = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
+        animator.SetBool("isRunning", havemove);
+
         if (!isDashing)
         {
             rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
@@ -52,8 +58,6 @@ public class PlayerController : MonoBehaviour
             Dash();
             hasJump = false;
         }
-
-        //UpdateAnimationState();
     }
 
     void Dash()
@@ -61,26 +65,28 @@ public class PlayerController : MonoBehaviour
         float dashDirection = spriteRenderer.flipX ? -1f : 1f;
         rb.velocity = new Vector2(dashForce * dashDirection, rb.velocity.y);
         isDashing = true;
+        dashEffectObject.SetActive(true);
         StartCoroutine(StopDash());
     }
 
     IEnumerator StopDash()
     {
-        yield return new WaitForSeconds(DashTime);
+        yield return new WaitForSeconds(dashTime);
         rb.velocity = new Vector2(0f, rb.velocity.y);
         isDashing = false;
+        dashEffectObject.SetActive(false);
     }
 
-    //void UpdateAnimationState()
-    //{
-        //if (moveInput.magnitude > 0)
-        //{
-            //animator.SetBool("isRunning", true);
-        //}
-        //else
-        //{
-            //animator.SetBool("isRunning", false);
-
-        //}
-    //}
+    void Die()
+    {
+        var isTouchingEnemy = rb.IsTouchingLayers(LayerMask.GetMask("Enemy", "Trap"));
+        if (isTouchingEnemy)
+        {
+            isAlive = false;
+            //anim.SetTrigger("Dying");
+            rb.velocity = new Vector2(0, 0);
+            //Xu ly die
+           // FindObjectOfType<GameController>().ProcessPlayerDeath();
+        }
+    }
 }

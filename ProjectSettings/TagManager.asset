@@ -3,17 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Ladder
-  - GaiNhon
-  - Vang
-  - Coin
-  - CongDichChuyen
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - 
   - Water
   - UI
   - 
@@ -45,19 +40,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: backgr
-    uniqueID: 3749286339
-    locked: 0
-  - name: ground
-    uniqueID: 3802995761
-    locked: 0
-  - name: enemy
-    uniqueID: 2941031735
-    locked: 0
-  - name: coin
-    uniqueID: 487640885
-    locked: 0
-  - name: ladder
-    uniqueID: 37003973
     locked: 0
