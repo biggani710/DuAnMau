@@ -72115,11 +72115,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3602025624450540069, guid: a5a6cc27f2a868147adadcdcd69e90dc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.65
+      value: -9.5
       objectReference: {fileID: 0}
     - target: {fileID: 3602025624450540069, guid: a5a6cc27f2a868147adadcdcd69e90dc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.44
+      value: -5.4
       objectReference: {fileID: 0}
     - target: {fileID: 3602025624450540069, guid: a5a6cc27f2a868147adadcdcd69e90dc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -72176,11 +72176,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8352780433485009590, guid: fcab789c229307b409b470e5d6475f18, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.9
+      value: -8.6
       objectReference: {fileID: 0}
     - target: {fileID: 8352780433485009590, guid: fcab789c229307b409b470e5d6475f18, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.9
+      value: -6.6
       objectReference: {fileID: 0}
     - target: {fileID: 8352780433485009590, guid: fcab789c229307b409b470e5d6475f18, type: 3}
       propertyPath: m_LocalPosition.z
@@ -72918,6 +72918,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2324958911688920137, guid: e338a50e4ccacc04498c56360bc17923, type: 3}
+      propertyPath: tenManChoi
+      value: Scene 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2774474362847143886, guid: e338a50e4ccacc04498c56360bc17923, type: 3}
       propertyPath: m_Name
       value: Sign
