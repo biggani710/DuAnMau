@@ -60,3 +60,6 @@ TagManager:
   - name: Player
     uniqueID: 4224331417
     locked: 0
+  - name: Game Over
+    uniqueID: 632497543
+    locked: 0
