@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Bullet
+  - Trap
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - Interactable
   - Player
   - Enemy
-  - 
+  - Trap
   - 
   - 
   - 
@@ -57,6 +58,9 @@ TagManager:
     locked: 0
   - name: Point
     uniqueID: 1024195603
+    locked: 0
+  - name: Trap
+    uniqueID: 2795468449
     locked: 0
   - name: Enemy
     uniqueID: 4136006657
