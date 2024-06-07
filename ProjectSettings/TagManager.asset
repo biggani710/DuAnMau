@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Bullet
   - Trap
+  - Audio
   layers:
   - Default
   - TransparentFX
@@ -64,6 +65,9 @@ TagManager:
     locked: 0
   - name: Enemy
     uniqueID: 4136006657
+    locked: 0
+  - name: Dash
+    uniqueID: 3471078919
     locked: 0
   - name: Player
     uniqueID: 4224331417
