@@ -32,8 +32,8 @@ public class GameController : MonoBehaviour
 
     public void AddScore(int scoreToAdd)
     {
-        score += scoreToAdd;
-        ScoreText.text += score.ToString();
+        score = scoreToAdd;
+        ScoreText.text = score.ToString();
     }
 
     private void Decreaselive()
