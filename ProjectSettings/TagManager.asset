@@ -15,7 +15,7 @@ TagManager:
   - UI
   - Interactable
   - Player
-  - 
+  - Enemy
   - 
   - 
   - 
@@ -57,6 +57,9 @@ TagManager:
     locked: 0
   - name: Point
     uniqueID: 1024195603
+    locked: 0
+  - name: Enemy
+    uniqueID: 4136006657
     locked: 0
   - name: Player
     uniqueID: 4224331417
