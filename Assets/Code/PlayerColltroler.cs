@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if(Input.GetMouseButtonDown(0) &&Time.time>=nextFỉreTime) 
+        if (Input.GetMouseButtonDown(0) && Time.time >= nextFỉreTime)
         {
             Shoot();
             nextFỉreTime = Time.time + FireRate;
@@ -84,11 +84,6 @@ public class PlayerController : MonoBehaviour
             {
                 return;
             }
-            if (transform.localScale.x < 0)
-            {
-                bulletPrefabs.GetComponent<Rigidbody2D>().velocity = new Vector2(x: -15, y: 0);
-            }
-            bulletPrefabs.GetComponent<Rigidbody2D>().velocity = new Vector2(x: 15, y: 0);
         }
 
         Die();
@@ -124,16 +119,19 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("Die");
             rb.velocity = new Vector2(0, 0);
             //Xu ly die
-           //FindObjectOfType<GameController>().ProcessPlayerDeath();
+            //FindObjectOfType<GameController>().ProcessPlayerDeath();
         }
     }
     void Shoot()
     {
-        Instantiate(bulletPrefabs,FirePoint.position, FirePoint.transform.rotation);
-        //if (transform.localScale.x < 0)
-        //{
-            //FirePoint.GetComponent<Rigidbody2D>().velocity = new Vector2(x:-15, y:0);
-        //}
-        //FirePoint.GetComponent<Rigidbody2D>().velocity = new Vector2(x:15, y:0);
+        Instantiate(bulletPrefabs, FirePoint.position, FirePoint.rotation, FirePoint.transform);
+        if (transform.localScale.x < 1f)
+        {
+            bulletPrefabs.GetComponent<Rigidbody2D>().velocity = new Vector2(x: -15, y: 0);
+        }
+        else
+        {
+            bulletPrefabs.GetComponent<Rigidbody2D>().velocity = new Vector2(x: 15, y: 0);
+        }
     }
 }
