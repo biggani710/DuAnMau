@@ -19,6 +19,10 @@ public class PlayerController : MonoBehaviour
     public GameObject dashEffectObject;
     Animator animator;
     private bool isAlive;
+    public GameObject bulletPrefabs;
+    public Transform FirePoint;
+    public float FireRate = 0.5f;
+    private float nextFỉreTime;
 
     void Start()
     {
@@ -58,6 +62,12 @@ public class PlayerController : MonoBehaviour
             Dash();
             hasJump = false;
         }
+
+        if(Input.GetMouseButtonDown(0) &&Time.time>=nextFỉreTime) 
+        {
+            Shoot();
+            nextFỉreTime = Time.time + FireRate;
+        }
     }
 
     void Dash()
@@ -88,5 +98,9 @@ public class PlayerController : MonoBehaviour
             //Xu ly die
            // FindObjectOfType<GameController>().ProcessPlayerDeath();
         }
+    }
+    void Shoot()
+    {
+        Instantiate(bulletPrefabs,FirePoint.position, FirePoint.rotation);
     }
 }

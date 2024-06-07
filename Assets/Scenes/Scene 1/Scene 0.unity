@@ -28455,6 +28455,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4436940104752749176, guid: 005fd6776358cbd4ab3301181620e25e, type: 3}
+      propertyPath: m_fontSize
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4436940104752749176, guid: 005fd6776358cbd4ab3301181620e25e, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 428063955d78a1c43a705fccc038da7f, type: 2}
+    - target: {fileID: 4436940104752749176, guid: 005fd6776358cbd4ab3301181620e25e, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4436940104752749176, guid: 005fd6776358cbd4ab3301181620e25e, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -477036770754129603, guid: 428063955d78a1c43a705fccc038da7f, type: 2}
+    - target: {fileID: 4436940104752749176, guid: 005fd6776358cbd4ab3301181620e25e, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4436940104752749176, guid: 005fd6776358cbd4ab3301181620e25e, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5117064030468264556, guid: 005fd6776358cbd4ab3301181620e25e, type: 3}
       propertyPath: m_Name
       value: GameController
@@ -28497,6 +28521,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6056372332545670995, guid: 005fd6776358cbd4ab3301181620e25e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625535177174293574, guid: 005fd6776358cbd4ab3301181620e25e, type: 3}
+      propertyPath: m_text
+      value: 999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625535177174293574, guid: 005fd6776358cbd4ab3301181620e25e, type: 3}
+      propertyPath: m_fontSize
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625535177174293574, guid: 005fd6776358cbd4ab3301181620e25e, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 428063955d78a1c43a705fccc038da7f, type: 2}
+    - target: {fileID: 7625535177174293574, guid: 005fd6776358cbd4ab3301181620e25e, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625535177174293574, guid: 005fd6776358cbd4ab3301181620e25e, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -477036770754129603, guid: 428063955d78a1c43a705fccc038da7f, type: 2}
+    - target: {fileID: 7625535177174293574, guid: 005fd6776358cbd4ab3301181620e25e, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625535177174293574, guid: 005fd6776358cbd4ab3301181620e25e, type: 3}
+      propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
