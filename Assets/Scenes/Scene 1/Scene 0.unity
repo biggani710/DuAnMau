@@ -28215,6 +28215,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bananas
       objectReference: {fileID: 0}
+    - target: {fileID: 3039812355856455047, guid: afd954a6c99e3d14da6f7b4b021c62ff, type: 3}
+      propertyPath: pointPickUp
+      value: 
+      objectReference: {fileID: 8300000, guid: af532e594509b0b42a816beef94b00c7, type: 3}
     - target: {fileID: 6604959789517427192, guid: afd954a6c99e3d14da6f7b4b021c62ff, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.59

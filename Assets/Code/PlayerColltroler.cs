@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("Die");
             rb.velocity = new Vector2(0, 0);
             //Xu ly die
-            //FindObjectOfType<GameController>().ProcessPlayerDeath();
+            FindObjectOfType<GameController>().ProcessPlayerDeath();
         }
     }
     void Shoot()

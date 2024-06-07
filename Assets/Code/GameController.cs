@@ -44,25 +44,13 @@ public class GameController : MonoBehaviour
         LiveText.text = live.ToString();
     }
 
-    //private void ProcessPlayerDeath()
-    //{
-        //if(live > 1)
-        //{
-            //Decreaselive();
-        //}
-        //else
-        //{
-            //ResetGameSession();
-        //}
-    //}
-
     private void ResetGame()
     {
         SceneManager.LoadScene(0);
         Destroy(gameObject);
     }
 
-    private void ProcessPlayerDeath()
+    public void ProcessPlayerDeath()
     {
         if(live > 1)
         {
