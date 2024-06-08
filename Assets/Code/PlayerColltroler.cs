@@ -24,16 +24,26 @@ public class PlayerController : MonoBehaviour
     public float FireRate = 0.5f;
     private float nextFỉreTime;
 
+    public float wallJumpForce = 20f; // Lực nhảy khi leo tường
+    public Transform wallCheckObject;
+    public LayerMask wallLayer;
+    private SpriteRenderer spriteRenderer1;
+    private bool isTouchingWall = false;
+    private bool canWallJump = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         isAlive = true;
+        spriteRenderer1 = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
+        isTouchingWall = Physics2D.OverlapCircle(wallCheckObject.position, 0.2f, wallLayer);
+
         isGrounded = Physics2D.OverlapCircle(groundCheckObject.position, 0.2f, LayerMask.GetMask("Ground"));
         float moveInput = Input.GetAxisRaw("Horizontal");
         bool havemove = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
@@ -86,6 +96,11 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.E) && isTouchingWall && canWallJump)
+        {
+            WallJump();
+        }
+
         Die();
     }
 
@@ -127,11 +142,33 @@ public class PlayerController : MonoBehaviour
         Instantiate(bulletPrefabs, FirePoint.position, FirePoint.rotation, FirePoint.transform);
         if (transform.localScale.x < 1f)
         {
-            bulletPrefabs.GetComponent<Rigidbody2D>().velocity = new Vector2(x: -15, y: 0);
+            bulletPrefabs.GetComponent<Rigidbody2D>().velocity = new Vector2(x: 15, y: 0);
         }
         else
         {
-            bulletPrefabs.GetComponent<Rigidbody2D>().velocity = new Vector2(x: 15, y: 0);
+            bulletPrefabs.GetComponent<Rigidbody2D>().velocity = new Vector2(x: -15, y: 0);
+        }
+    }
+
+    void WallJump()
+    {
+        float jumpDirection = spriteRenderer.flipX ? -1f : 1f;
+        rb.velocity = new Vector2(wallJumpForce * jumpDirection, jumpForce);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            canWallJump = true;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            canWallJump = false;
         }
     }
 }

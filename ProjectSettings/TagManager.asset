@@ -9,6 +9,7 @@ TagManager:
   - Trap
   - Audio
   - Enemy
+  - tuong
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Player
   - Enemy
   - Trap
-  - 
+  - wallLayer
   - 
   - 
   - 
@@ -51,6 +52,9 @@ TagManager:
     locked: 0
   - name: Ground
     uniqueID: 1052686861
+    locked: 0
+  - name: tuong
+    uniqueID: 2678816517
     locked: 0
   - name: Door
     uniqueID: 1680150779
