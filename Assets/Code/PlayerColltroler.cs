@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
         bool havemove = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
         animator.SetBool("isRunning", havemove);
 
+
         if (!isDashing)
         {
             rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
@@ -50,24 +51,42 @@ public class PlayerController : MonoBehaviour
             {
                 spriteRenderer.flipX = true;
             }
+            if (!isAlive)
+            {
+                return;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             hasJump = true;
+            if (!isAlive)
+            {
+                return;
+            }
         }
         if (Input.GetKeyDown(KeyCode.LeftShift) && hasJump)
         {
             Dash();
             hasJump = false;
+            if (!isAlive)
+            {
+                return;
+            }
         }
 
-        if(Input.GetMouseButtonDown(0) &&Time.time>=nextFỉreTime) 
+        if (Input.GetMouseButtonDown(0) && Time.time >= nextFỉreTime)
         {
             Shoot();
             nextFỉreTime = Time.time + FireRate;
+            if (!isAlive)
+            {
+                return;
+            }
         }
+
+        Die();
     }
 
     void Dash()
@@ -77,6 +96,10 @@ public class PlayerController : MonoBehaviour
         isDashing = true;
         dashEffectObject.SetActive(true);
         StartCoroutine(StopDash());
+        if (!isAlive)
+        {
+            return;
+        }
     }
 
     IEnumerator StopDash()
@@ -93,14 +116,22 @@ public class PlayerController : MonoBehaviour
         if (isTouchingEnemy)
         {
             isAlive = false;
-            //anim.SetTrigger("Dying");
+            animator.SetTrigger("Die");
             rb.velocity = new Vector2(0, 0);
             //Xu ly die
-           // FindObjectOfType<GameController>().ProcessPlayerDeath();
+            FindObjectOfType<GameController>().ProcessPlayerDeath();
         }
     }
     void Shoot()
     {
-        Instantiate(bulletPrefabs,FirePoint.position, FirePoint.rotation);
+        Instantiate(bulletPrefabs, FirePoint.position, FirePoint.rotation, FirePoint.transform);
+        if (transform.localScale.x < 1f)
+        {
+            bulletPrefabs.GetComponent<Rigidbody2D>().velocity = new Vector2(x: -15, y: 0);
+        }
+        else
+        {
+            bulletPrefabs.GetComponent<Rigidbody2D>().velocity = new Vector2(x: 15, y: 0);
+        }
     }
 }
