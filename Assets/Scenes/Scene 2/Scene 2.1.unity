@@ -5346,7 +5346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyPrefabs: {fileID: 1808519254902808391, guid: 47e677f4845d89e4288fa5d973f8dd6e, type: 3}
-  spawnRate: 0.1
+  spawnRate: 0.01
   spawnRadius: 19
 --- !u!4 &1688154612
 Transform:
@@ -17798,6 +17798,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1456489117420870395, guid: 47e677f4845d89e4288fa5d973f8dd6e, type: 3}
+      propertyPath: moveSpeed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1808519254902808391, guid: 47e677f4845d89e4288fa5d973f8dd6e, type: 3}
       propertyPath: m_Name
       value: Enemy2
