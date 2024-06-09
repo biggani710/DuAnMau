@@ -8,6 +8,11 @@ public class AudioManager : MonoBehaviour
     public AudioSource vfs;
 
     public AudioClip musicClip;
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
     void Start()
     {
         musicAudioSource.clip = musicClip;
