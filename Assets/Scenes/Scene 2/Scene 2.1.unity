@@ -5346,7 +5346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyPrefabs: {fileID: 1808519254902808391, guid: 47e677f4845d89e4288fa5d973f8dd6e, type: 3}
-  spawnRate: 0.01
+  spawnRate: 0.5
   spawnRadius: 19
 --- !u!4 &1688154612
 Transform:
