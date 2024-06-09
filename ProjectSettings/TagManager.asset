@@ -10,6 +10,7 @@ TagManager:
   - Audio
   - Enemy
   - tuong
+  - wallCheckObject
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - Enemy
   - Trap
   - wallLayer
-  - 
+  - wallCheckObject
   - 
   - 
   - 
