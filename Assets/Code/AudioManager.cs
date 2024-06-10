@@ -11,6 +11,7 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
+        
         DontDestroyOnLoad(gameObject);
     }
     void Start()
