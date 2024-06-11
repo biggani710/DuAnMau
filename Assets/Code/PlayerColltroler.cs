@@ -139,14 +139,15 @@ public class PlayerController : MonoBehaviour
     }
     void Shoot()
     {
+        float fireDirection = spriteRenderer.flipX ? -1f : 1f;
         Instantiate(bulletPrefabs, FirePoint.position, FirePoint.rotation, FirePoint.transform);
         if (transform.localScale.x < 1f)
         {
-            bulletPrefabs.GetComponent<Rigidbody2D>().velocity = new Vector2(x: -1f, y: 0);
+           bulletPrefabs.GetComponent<Rigidbody2D>().velocity = new Vector2(x: -1f, y: 0);
         }
         else
         {
-            bulletPrefabs.GetComponent<Rigidbody2D>().velocity = new Vector2(x: 1f, y: 0);
+           bulletPrefabs.GetComponent<Rigidbody2D>().velocity = new Vector2(x: 1f, y: 0);
         }
     }
 

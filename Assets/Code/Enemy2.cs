@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy2 : MonoBehaviour
@@ -31,6 +32,18 @@ public class Enemy2 : MonoBehaviour
         {
             Vector3 direction = (playerTransform.position - transform.position).normalized;
             transform.Translate(direction * moveSpeed * Time.deltaTime);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Player") 
+        {
+            collision.gameObject.SetActive(false);
+        }
+        if (collision.tag == "Bullet")
+        {
+            Destroy(gameObject);
+            //collision.tag == "Enemy";
         }
     }
 }
