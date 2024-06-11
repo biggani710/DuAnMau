@@ -12,6 +12,9 @@ public class GameController : MonoBehaviour
     [SerializeField] TextMeshProUGUI ScoreText;
     [SerializeField] TextMeshProUGUI LiveText;
 
+    public GameObject GameOver;
+
+
     private void Awake()
     {
         int numberGameSessions = FindObjectsOfType<GameController>().Length;
@@ -33,7 +36,7 @@ public class GameController : MonoBehaviour
     public void AddScore(int scoreToAdd)
     {
         score += scoreToAdd;
-        ScoreText.text += score.ToString();
+        ScoreText.text = score.ToString();
     }
 
     private void Decreaselive()
@@ -44,25 +47,13 @@ public class GameController : MonoBehaviour
         LiveText.text = live.ToString();
     }
 
-    //private void ProcessPlayerDeath()
-    //{
-        //if(live > 1)
-        //{
-            //Decreaselive();
-        //}
-        //else
-        //{
-            //ResetGameSession();
-        //}
-    //}
-
     private void ResetGame()
     {
         SceneManager.LoadScene(0);
         Destroy(gameObject);
     }
 
-    private void ProcessPlayerDeath()
+    public void ProcessPlayerDeath()
     {
         if(live > 1)
         {
@@ -72,5 +63,9 @@ public class GameController : MonoBehaviour
         {
             ResetGame();
         }
+    }  
+    public int GetScore()
+    {
+        return score;
     }
 }

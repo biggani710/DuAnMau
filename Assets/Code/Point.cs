@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Point : MonoBehaviour
 {
-    // [SerializeField] AudioClip pointPickUp;
+    [SerializeField] AudioClip pointPickUp;
     [SerializeField] float pointValue = 100;
 
     private bool isCollected = false; 
@@ -14,7 +14,7 @@ public class Point : MonoBehaviour
         {
             isCollected = true;
            Object.FindObjectOfType<GameController>().AddScore((int)pointValue);
-           // AudioSource.PlayClipAtPoint(pointPickUp, Camera.main.transform.position);
+           AudioSource.PlayClipAtPoint(pointPickUp, Camera.main.transform.position);
            gameObject.SetActive(false);
             Destroy(gameObject);
         }

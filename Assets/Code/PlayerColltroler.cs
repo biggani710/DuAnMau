@@ -19,6 +19,17 @@ public class PlayerController : MonoBehaviour
     public GameObject dashEffectObject;
     Animator animator;
     private bool isAlive;
+    public GameObject bulletPrefabs;
+    public Transform FirePoint;
+    public float FireRate = 0.5f;
+    private float nextFỉreTime;
+
+    public float wallJumpForce = 20f; // Lực nhảy khi leo tường
+    public Transform wallCheckObject;
+    public LayerMask wallLayer;
+    private SpriteRenderer spriteRenderer1;
+    private bool isTouchingWall = false;
+    private bool canWallJump = false;
 
     void Start()
     {
@@ -26,14 +37,18 @@ public class PlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         isAlive = true;
+        spriteRenderer1 = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
+        isTouchingWall = Physics2D.OverlapCircle(wallCheckObject.position, 0.2f, wallLayer);
+
         isGrounded = Physics2D.OverlapCircle(groundCheckObject.position, 0.2f, LayerMask.GetMask("Ground"));
         float moveInput = Input.GetAxisRaw("Horizontal");
         bool havemove = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
         animator.SetBool("isRunning", havemove);
+
 
         if (!isDashing)
         {
@@ -46,18 +61,47 @@ public class PlayerController : MonoBehaviour
             {
                 spriteRenderer.flipX = true;
             }
+            if (!isAlive)
+            {
+                return;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             hasJump = true;
+            if (!isAlive)
+            {
+                return;
+            }
         }
         if (Input.GetKeyDown(KeyCode.LeftShift) && hasJump)
         {
             Dash();
             hasJump = false;
+            if (!isAlive)
+            {
+                return;
+            }
         }
+
+        if (Input.GetMouseButtonDown(0) && Time.time >= nextFỉreTime)
+        {
+            Shoot();
+            nextFỉreTime = Time.time + FireRate;
+            if (!isAlive)
+            {
+                return;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.E) && isTouchingWall && canWallJump)
+        {
+            WallJump();
+        }
+
+        Die();
     }
 
     void Dash()
@@ -67,6 +111,10 @@ public class PlayerController : MonoBehaviour
         isDashing = true;
         dashEffectObject.SetActive(true);
         StartCoroutine(StopDash());
+        if (!isAlive)
+        {
+            return;
+        }
     }
 
     IEnumerator StopDash()
@@ -83,10 +131,45 @@ public class PlayerController : MonoBehaviour
         if (isTouchingEnemy)
         {
             isAlive = false;
-            //anim.SetTrigger("Dying");
+            animator.SetTrigger("Die");
             rb.velocity = new Vector2(0, 0);
             //Xu ly die
-           // FindObjectOfType<GameController>().ProcessPlayerDeath();
+            FindObjectOfType<GameController>().ProcessPlayerDeath();
+        }
+    }
+    void Shoot()
+    {
+        float fireDirection = spriteRenderer.flipX ? -1f : 1f;
+        Instantiate(bulletPrefabs, FirePoint.position, FirePoint.rotation, FirePoint.transform);
+        if (transform.localScale.x < 1f)
+        {
+           bulletPrefabs.GetComponent<Rigidbody2D>().velocity = new Vector2(x: -1f, y: 0);
+        }
+        else
+        {
+           bulletPrefabs.GetComponent<Rigidbody2D>().velocity = new Vector2(x: 1f, y: 0);
+        }
+    }
+
+    void WallJump()
+    {
+        float jumpDirection = spriteRenderer.flipX ? -1f : 1f;
+        rb.velocity = new Vector2(wallJumpForce * jumpDirection, jumpForce);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            canWallJump = true;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            canWallJump = false;
         }
     }
 }
