@@ -12,6 +12,9 @@ public class GameController : MonoBehaviour
     [SerializeField] TextMeshProUGUI ScoreText;
     [SerializeField] TextMeshProUGUI LiveText;
 
+    public GameObject GameOver;
+
+
     private void Awake()
     {
         int numberGameSessions = FindObjectsOfType<GameController>().Length;
@@ -60,5 +63,9 @@ public class GameController : MonoBehaviour
         {
             ResetGame();
         }
+    }  
+    public int GetScore()
+    {
+        return score;
     }
 }

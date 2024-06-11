@@ -75,6 +75,9 @@ TagManager:
   - name: Dash
     uniqueID: 3471078919
     locked: 0
+  - name: End
+    uniqueID: 2884004233
+    locked: 0
   - name: Player
     uniqueID: 4224331417
     locked: 0
