@@ -78,6 +78,9 @@ TagManager:
   - name: End
     uniqueID: 2884004233
     locked: 0
+  - name: boss
+    uniqueID: 1861788097
+    locked: 0
   - name: Player
     uniqueID: 4224331417
     locked: 0
